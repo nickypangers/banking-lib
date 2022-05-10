@@ -35,6 +35,13 @@ func NewAuthenticationError(message string) *AppError {
 	}
 }
 
+func NewAuthorizationError(message string) *AppError {
+	return &AppError{
+		Code:    http.StatusForbidden,
+		Message: message,
+	}
+}
+
 func (e *AppError) AsMessage() AppError {
 	return AppError{
 		Message: e.Message,
